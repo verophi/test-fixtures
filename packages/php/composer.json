@@ -1,0 +1,14 @@
+{
+  "name": "verophi/vero-test-fixtures-php",
+  "description": "Intentionally vulnerable PHP fixtures for vero E2E tests",
+  "require": {
+    "guzzlehttp/guzzle": "7.4.0"
+  },
+  "config": {
+    "policy": {
+      "advisories": {
+        "block": false
+      }
+    }
+  }
+}
