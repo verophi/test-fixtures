@@ -1,0 +1,14 @@
+.idea/
+.DS_Store
+.env
+
+# Package manager artifacts
+packages/npm/node_modules/
+packages/php/vendor/
+packages/python/.venv/
+packages/python/venv/
+packages/python/__pycache__/
+packages/go/vendor/
+packages/elixir/deps/
+packages/elixir/_build/
+packages/rust/target/

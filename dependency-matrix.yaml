@@ -1,0 +1,254 @@
+# verophi test-fixtures dependency matrix
+# Assertion input for verophi-inttest.
+# CVE data from OSV.dev, June 2026.
+
+packages:
+  # --- npm ---
+  - name: lodash
+    ecosystem: npm
+    from: "4.17.20"
+    to: "4.17.21"
+    bump: patch
+    cves:
+      - id: CVE-2021-23337
+        description: Command Injection
+        fixed_by_to: true
+      - id: CVE-2020-28500
+        description: ReDoS
+        fixed_by_to: true
+      - id: CVE-2025-13465
+        description: Prototype Pollution
+        fix_version: "4.17.23"
+        fixed_by_to: false  # Cap too low
+      - id: CVE-2026-2950
+        fix_version: "4.18.0"
+        fixed_by_to: false
+      - id: CVE-2026-4800
+        fix_version: "4.18.0"
+        fixed_by_to: false
+
+  - name: minimist
+    ecosystem: npm
+    from: "1.2.5"
+    to: "1.2.6"
+    bump: patch
+    cves:
+      - id: CVE-2021-44906
+        description: Prototype Pollution
+        fixed_by_to: true
+
+  - name: express
+    ecosystem: npm
+    from: "4.17.1"
+    to: "4.21.0"
+    bump: minor
+    cves: []  # No CVE — tests MR without security impact
+
+  # --- Python ---
+  - name: PyYAML
+    ecosystem: python
+    from: "5.3.1"
+    to: "6.0"
+    bump: major
+    cves:
+      - id: CVE-2020-14343
+        description: Arbitrary Code Execution
+        fix_version: "5.4"
+        fixed_by_to: true
+
+  - name: Pillow
+    ecosystem: python
+    from: "9.0.0"
+    to: "10.2.0"
+    bump: major
+    cves:
+      - id: multiple
+        description: "14 CVEs (diverse)"
+        fixed_by_to: partial
+
+  - name: requests
+    ecosystem: python
+    from: "2.31.0"
+    to: "2.32.0"
+    bump: patch
+    enabled: false  # Disabled in renovate.json
+    cves:
+      - id: CVE-2024-35195
+        fixed_by_to: true
+
+  # --- Go ---
+  - name: golang.org/x/net
+    ecosystem: go
+    from: "0.16.0"
+    to: "0.33.0"
+    bump: minor
+    cves:
+      - id: CVE-2023-44487
+        description: HTTP/2 Rapid Reset
+        fix_version: "0.17.0"
+        fixed_by_to: true
+      - id: multiple
+        description: "19 CVEs total"
+        fixed_by_to: true
+
+  - name: golang.org/x/crypto
+    ecosystem: go
+    from: "0.16.0"
+    to: "0.31.0"
+    bump: minor
+    cves:
+      - id: CVE-2023-48795
+        description: Terrapin
+        fix_version: "0.17.0"
+        fixed_by_to: true
+      - id: multiple
+        description: "24 CVEs total"
+        fixed_by_to: true
+
+  - name: github.com/gin-gonic/gin
+    ecosystem: go
+    from: "1.7.0"
+    to: "1.9.1"
+    bump: minor
+    cves:
+      - id: CVE-2023-26125
+        fixed_by_to: true
+      - id: multiple
+        description: "5 CVEs total"
+        fixed_by_to: true
+
+  # --- Maven ---
+  - name: org.apache.logging.log4j:log4j-core
+    ecosystem: maven
+    from: "2.14.1"
+    to: "2.17.1"
+    bump: minor
+    cves:
+      - id: CVE-2021-44228
+        description: Log4Shell
+        fixed_by_to: true
+      - id: CVE-2021-45046
+        fixed_by_to: true
+      - id: multiple
+        description: "7 CVEs total"
+        fixed_by_to: true
+
+  # --- Rust ---
+  - name: rustls
+    ecosystem: rust
+    from: "0.20.8"
+    to: "0.21.11"
+    bump: minor
+    cves:
+      - id: RUSTSEC-2024-0336
+        description: infinite loop
+        fix_version: "0.21.11"
+        fixed_by_to: true
+
+  - name: tokio
+    ecosystem: rust
+    from: "1.17.0"
+    to: "1.27.0"
+    bump: minor
+    cves:
+      - id: RUSTSEC-2023-0001
+        fixed_by_to: true
+      - id: multiple
+        description: "6 CVEs total"
+        fixed_by_to: true
+
+  # --- Ruby ---
+  - name: actionpack
+    ecosystem: ruby
+    from: "6.1.4"
+    to: "6.1.7.8"
+    bump: patch
+    cves:
+      - id: multiple
+        description: "11 Rails CVEs"
+        fixed_by_to: true
+
+  # --- NuGet ---
+  - name: Newtonsoft.Json
+    ecosystem: nuget
+    from: "12.0.3"
+    to: "13.0.3"
+    bump: major
+    cves:
+      - id: GHSA-5crp-9r3c-p9vr
+        description: DoS
+        fixed_by_to: true
+
+  - name: System.Text.Json
+    ecosystem: nuget
+    from: "6.0.0"
+    to: "8.0.5"
+    bump: major
+    cves:
+      - id: GHSA-8g4q-xg66-9fp4
+        description: DoS
+        fixed_by_to: true
+
+  # --- PHP ---
+  - name: guzzlehttp/guzzle
+    ecosystem: php
+    from: "7.4.0"
+    to: "7.8.0"
+    bump: minor
+    cves:
+      - id: multiple
+        description: "5 CVEs (SSRF, Header Injection)"
+        fixed_by_to: true
+
+  # --- Elixir ---
+  - name: phoenix
+    ecosystem: elixir
+    from: "1.6.0"
+    to: "1.7.0"
+    bump: minor
+    cves:
+      - id: GHSA-p8f7-22gq-m7j9
+        description: Token Leakage
+        fixed_by_to: true
+
+  # --- Dart ---
+  - name: dio
+    ecosystem: dart
+    from: "4.0.0"
+    to: "5.0.0"
+    bump: major
+    cves:
+      - id: CVE-2021-31402
+        description: CRLF Injection
+        fixed_by_to: true
+
+  # --- Swift ---
+  - name: apple/swift-nio-http2
+    ecosystem: swift
+    from: "1.25.0"
+    to: "1.28.0"
+    bump: minor
+    cves:
+      - id: CVE-2023-44487
+        description: HTTP/2 Rapid Reset
+        fixed_by_to: true
+
+  # --- Docker ---
+  - name: node
+    ecosystem: docker
+    from: "20-alpine"
+    to: pinDigest
+    bump: pinDigest
+    cves: []  # Tests pinDigest updateType, no CVE correlation
+
+summary:
+  ecosystems: 12
+  packages_total: 20  # 19 + 1 Docker
+  cve_fixing_updates: 17
+  updates_without_cve: 2  # express, node pinDigest
+  update_types:
+    patch: 5
+    minor: 8
+    major: 6
+    pinDigest: 1
+  unfixable_cves: 3  # lodash (cap too low for 4.17.23/4.18.0)

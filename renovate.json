@@ -1,0 +1,157 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "automerge": false,
+  "prConcurrentLimit": 0,
+  "prHourlyLimit": 0,
+  "labels": [
+    "renovate"
+  ],
+  "packageRules": [
+    {
+      "description": "npm: lodash CVE fix (patch) — fixes CVE-2021-23337, CVE-2020-28500",
+      "matchPackageNames": [
+        "lodash"
+      ],
+      "allowedVersions": "<=4.17.21"
+    },
+    {
+      "description": "npm: minimist CVE fix (patch) — fixes CVE-2021-44906",
+      "matchPackageNames": [
+        "minimist"
+      ],
+      "allowedVersions": "<=1.2.6"
+    },
+    {
+      "description": "npm: express minor update — no CVE, tests MR without security impact",
+      "matchPackageNames": [
+        "express"
+      ],
+      "allowedVersions": "<=4.21.0"
+    },
+    {
+      "description": "Python: PyYAML CVE fix (major) — fixes CVE-2020-14343",
+      "matchPackageNames": [
+        "PyYAML"
+      ],
+      "allowedVersions": "<=6.0"
+    },
+    {
+      "description": "Python: Pillow CVE fix (major) — fixes multiple CVEs",
+      "matchPackageNames": [
+        "Pillow"
+      ],
+      "allowedVersions": "<=10.2.0"
+    },
+    {
+      "description": "Python: requests CVE fix (patch) — fixes CVE-2024-35195",
+      "matchPackageNames": [
+        "requests"
+      ],
+      "allowedVersions": "<=2.32.0"
+    },
+    {
+      "description": "Go: x/net CVE fixes — fixes CVE-2023-44487 (HTTP/2 Rapid Reset) and others",
+      "matchPackageNames": [
+        "golang.org/x/net"
+      ],
+      "allowedVersions": "<=v0.33.0"
+    },
+    {
+      "description": "Go: x/crypto CVE fixes — fixes CVE-2023-48795 (Terrapin) and others",
+      "matchPackageNames": [
+        "golang.org/x/crypto"
+      ],
+      "allowedVersions": "<=v0.31.0"
+    },
+    {
+      "description": "Go: gin CVE fix (minor) — fixes CVE-2023-26125 and others",
+      "matchPackageNames": [
+        "github.com/gin-gonic/gin"
+      ],
+      "allowedVersions": "<=v1.9.1"
+    },
+    {
+      "description": "Maven: log4j-core CVE fix (minor) — fixes CVE-2021-44228 (Log4Shell), CVE-2021-45046",
+      "matchPackageNames": [
+        "org.apache.logging.log4j:log4j-core"
+      ],
+      "allowedVersions": "<=2.17.1"
+    },
+    {
+      "description": "Rust: rustls CVE fix (patch) — fixes RUSTSEC-2024-0336",
+      "matchPackageNames": [
+        "rustls"
+      ],
+      "allowedVersions": "<=0.21.11"
+    },
+    {
+      "description": "Rust: tokio CVE fix (minor) — fixes RUSTSEC-2023-0001 and others",
+      "matchPackageNames": [
+        "tokio"
+      ],
+      "allowedVersions": "<=1.27.0"
+    },
+    {
+      "description": "Ruby: actionpack CVE fixes (patch) — fixes multiple Rails CVEs",
+      "matchPackageNames": [
+        "actionpack"
+      ],
+      "allowedVersions": "<=6.1.7.8"
+    },
+    {
+      "description": "NuGet: Newtonsoft.Json CVE fix (major) — fixes GHSA-5crp-9r3c-p9vr",
+      "matchPackageNames": [
+        "Newtonsoft.Json"
+      ],
+      "allowedVersions": "<=13.0.3"
+    },
+    {
+      "description": "NuGet: System.Text.Json CVE fix (major) — fixes GHSA-8g4q-xg66-9fp4",
+      "matchPackageNames": [
+        "System.Text.Json"
+      ],
+      "allowedVersions": "<=8.0.5"
+    },
+    {
+      "description": "PHP: guzzlehttp/guzzle CVE fixes (minor) — fixes multiple HTTP client CVEs",
+      "matchPackageNames": [
+        "guzzlehttp/guzzle"
+      ],
+      "allowedVersions": "<=7.8.0"
+    },
+    {
+      "description": "Elixir: phoenix CVE fix (minor) — fixes GHSA-p8f7-22gq-m7j9",
+      "matchPackageNames": [
+        "phoenix"
+      ],
+      "allowedVersions": "<=1.7.0"
+    },
+    {
+      "description": "Dart: dio CVE fix (major) — fixes CVE-2021-31402 (CRLF injection)",
+      "matchPackageNames": [
+        "dio"
+      ],
+      "allowedVersions": "<=5.0.0"
+    },
+    {
+      "description": "Swift: swift-nio-http2 CVE fix (minor) — fixes CVE-2023-44487",
+      "matchPackageNames": [
+        "apple/swift-nio-http2"
+      ],
+      "allowedVersions": "<=1.28.0"
+    },
+    {
+      "description": "Docker: pin node image digest — tests pinDigest updateType",
+      "matchPackageNames": [
+        "node"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "pinDigests": true
+    }
+  ]
+}
