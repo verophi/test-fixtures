@@ -3,7 +3,7 @@
   "private": true,
   "description": "Intentionally vulnerable npm fixtures for vero E2E tests",
   "dependencies": {
-    "lodash": "4.17.20",
+    "lodash": "4.17.21",
     "minimist": "1.2.5",
     "express": "4.17.1"
   }
