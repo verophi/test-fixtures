@@ -4,6 +4,7 @@
     "config:recommended"
   ],
   "automerge": false,
+  "recreateWhen": "always",
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "labels": [
