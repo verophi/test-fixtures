@@ -3,7 +3,7 @@
         'name' => 'verophi/vero-test-fixtures-php',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8e03d2355d8a188dfe19d41f4b44d904935e7baf',
+        'reference' => '69298a73e4fbf05ee07fd7b7bab3efd216a150db',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,9 +11,9 @@
     ),
     'versions' => array(
         'guzzlehttp/guzzle' => array(
-            'pretty_version' => '7.4.0',
-            'version' => '7.4.0.0',
-            'reference' => '868b3571a039f0ebc11ac8f344f4080babe2cb94',
+            'pretty_version' => '7.8.0',
+            'version' => '7.8.0.0',
+            'reference' => '1110f66a6530a40fe7aea0378fe608ee2b2248f9',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
             'aliases' => array(),
@@ -112,7 +112,7 @@
         'verophi/vero-test-fixtures-php' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8e03d2355d8a188dfe19d41f4b44d904935e7baf',
+            'reference' => '69298a73e4fbf05ee07fd7b7bab3efd216a150db',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
