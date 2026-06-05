@@ -5,6 +5,7 @@
   ],
   "automerge": false,
   "recreateWhen": "always",
+  "commitBody": "[skip ci]",
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "labels": [
