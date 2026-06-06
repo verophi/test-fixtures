@@ -6,6 +6,8 @@
   "automerge": false,
   "recreateWhen": "always",
   "commitBody": "[skip ci]",
+  "lockFileMaintenance": { "enabled": false },
+  "updateLockFiles": false,
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "labels": [
