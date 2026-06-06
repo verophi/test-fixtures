@@ -11,9 +11,16 @@
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
   "labels": [
-    "renovate"
+    "renovate",
+    "{{datasource}}",
+    "{{updateType}}"
   ],
   "packageRules": [
+    {
+      "description": "Label packages not covered by Trivy SBOM scanning",
+      "matchDatasources": ["github-tags", "docker"],
+      "addLabels": ["no-sbom-coverage"]
+    },
     {
       "description": "npm: lodash CVE fix (patch) — fixes CVE-2021-23337, CVE-2020-28500",
       "matchPackageNames": [
@@ -148,6 +155,16 @@
       "allowedVersions": "<=1.28.0"
     },
     {
+      "description": "Docker: nginx CVE fix (minor) — fixes CVE-2025-23419 (session resumption bypass)",
+      "matchPackageNames": [
+        "nginx"
+      ],
+      "matchDatasources": [
+        "docker"
+      ],
+      "allowedVersions": "<=1.25"
+    },
+    {
       "description": "Docker: pin node image digest — tests pinDigest updateType",
       "matchPackageNames": [
         "node"
@@ -156,6 +173,50 @@
         "docker"
       ],
       "pinDigests": true
+    },
+    {
+      "description": "CASE-GROUP-1: Gruppierte Updates — axios + tough-cookie + semver in einem Branch",
+      "groupName": "http-client-group",
+      "matchPackageNames": [
+        "axios",
+        "tough-cookie",
+        "semver"
+      ]
+    },
+    {
+      "description": "CASE-GROUP-1: axios version cap",
+      "matchPackageNames": [
+        "axios"
+      ],
+      "allowedVersions": "<=0.21.4"
+    },
+    {
+      "description": "CASE-GROUP-1: tough-cookie version cap",
+      "matchPackageNames": [
+        "tough-cookie"
+      ],
+      "allowedVersions": "<=4.1.3"
+    },
+    {
+      "description": "CASE-GROUP-1: semver version cap",
+      "matchPackageNames": [
+        "semver"
+      ],
+      "allowedVersions": "<=7.5.2"
+    },
+    {
+      "description": "CASE-PIN-1: json5 pin update — tests rangeStrategy pin",
+      "matchPackageNames": [
+        "json5"
+      ],
+      "rangeStrategy": "pin"
+    },
+    {
+      "description": "CASE-PIN-2: ws pin update — tests rangeStrategy pin",
+      "matchPackageNames": [
+        "ws"
+      ],
+      "rangeStrategy": "pin"
     }
   ]
 }
