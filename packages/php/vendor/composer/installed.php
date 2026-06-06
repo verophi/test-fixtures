@@ -3,7 +3,7 @@
         'name' => 'verophi/vero-test-fixtures-php',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8e03d2355d8a188dfe19d41f4b44d904935e7baf',
+        'reference' => '5701bd0d8c464f2f49a4b4124ef55a03fa917447',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -112,7 +112,7 @@
         'verophi/vero-test-fixtures-php' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8e03d2355d8a188dfe19d41f4b44d904935e7baf',
+            'reference' => '5701bd0d8c464f2f49a4b4124ef55a03fa917447',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
