@@ -1,222 +1,84 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
+  "extends": ["config:recommended"],
   "automerge": false,
   "recreateWhen": "always",
   "commitBody": "[skip ci]",
-  "lockFileMaintenance": { "enabled": false },
-  "updateLockFiles": false,
+  "lockFileMaintenance": { "enabled": true },
+  "skipArtifactsUpdate": true,
+  "rollbackPrs": true,
   "prConcurrentLimit": 0,
   "prHourlyLimit": 0,
-  "labels": [
-    "renovate",
-    "{{datasource}}",
-    "{{updateType}}"
-  ],
+  "labels": ["renovate", "{{datasource}}", "{{updateType}}"],
   "packageRules": [
     {
       "description": "Label packages not covered by Trivy SBOM scanning",
       "matchDatasources": ["github-tags", "docker"],
       "addLabels": ["no-sbom-coverage"]
     },
+    { "description": "npm: lodash CVE fix (patch)", "matchPackageNames": ["lodash"], "allowedVersions": "<=4.17.21" },
+    { "description": "npm: minimist CVE fix (patch)", "matchPackageNames": ["minimist"], "allowedVersions": "<=1.2.6" },
+    { "description": "npm: express minor update", "matchPackageNames": ["express"], "allowedVersions": "<=4.21.0" },
+    { "description": "Python: PyYAML CVE fix (major)", "matchPackageNames": ["PyYAML"], "allowedVersions": "<=6.0" },
+    { "description": "Python: Pillow CVE fix (major)", "matchPackageNames": ["Pillow"], "allowedVersions": "<=10.2.0" },
+    { "description": "Python: requests CVE fix (patch)", "matchPackageNames": ["requests"], "allowedVersions": "<=2.32.0" },
+    { "description": "Python: python-multipart CVE fix (minor) — exercises PEP503 name normalization (hyphens/underscores)", "matchPackageNames": ["python-multipart"], "allowedVersions": "<=0.0.18" },
+    { "description": "Go: x/net CVE fixes", "matchPackageNames": ["golang.org/x/net"], "allowedVersions": "<=v0.33.0" },
+    { "description": "Go: x/crypto CVE fixes", "matchPackageNames": ["golang.org/x/crypto"], "allowedVersions": "<=v0.31.0" },
+    { "description": "Go: gin CVE fix (minor)", "matchPackageNames": ["github.com/gin-gonic/gin"], "allowedVersions": "<=v1.9.1" },
+    { "description": "Maven: log4j-core CVE fix (minor)", "matchPackageNames": ["org.apache.logging.log4j:log4j-core"], "allowedVersions": "<=2.17.1" },
+    { "description": "Rust: rustls CVE fix (patch)", "matchPackageNames": ["rustls"], "allowedVersions": "<=0.21.11" },
+    { "description": "Rust: tokio CVE fix (minor)", "matchPackageNames": ["tokio"], "allowedVersions": "<=1.27.0" },
+    { "description": "Ruby: actionpack CVE fixes (patch)", "matchPackageNames": ["actionpack"], "allowedVersions": "<=6.1.7.8" },
+    { "description": "NuGet: Newtonsoft.Json CVE fix (major)", "matchPackageNames": ["Newtonsoft.Json"], "allowedVersions": "<=13.0.3" },
+    { "description": "NuGet: System.Text.Json CVE fix (major)", "matchPackageNames": ["System.Text.Json"], "allowedVersions": "<=8.0.5" },
+    { "description": "PHP: guzzlehttp/guzzle CVE fixes (minor)", "matchPackageNames": ["guzzlehttp/guzzle"], "allowedVersions": "<=7.8.0" },
+    { "description": "Elixir: phoenix CVE fix (minor)", "matchPackageNames": ["phoenix"], "allowedVersions": "<=1.7.0" },
+    { "description": "Dart: dio CVE fix (major)", "matchPackageNames": ["dio"], "allowedVersions": "<=5.0.0" },
     {
-      "description": "npm: lodash CVE fix (patch) — fixes CVE-2021-23337, CVE-2020-28500",
-      "matchPackageNames": [
-        "lodash"
-      ],
-      "allowedVersions": "<=4.17.21"
+      "description": "Swift: swift-nio-http2 capped at current version. No update created, so CVE-2023-44487 becomes partially addressed (x/net=fixed, swift-nio-http2=not fixed -> 1/2 occurrences).",
+      "matchPackageNames": ["apple/swift-nio-http2"],
+      "enabled": false
+    },
+    { "description": "Docker: nginx CVE fix (minor)", "matchPackageNames": ["nginx"], "matchDatasources": ["docker"], "allowedVersions": "<=1.25" },
+    { "description": "Docker: pin node image digest (pinDigest)", "matchPackageNames": ["node"], "matchDatasources": ["docker"], "pinDigests": true },
+
+    { "description": "CASE-GROUP-1: grouped axios + tough-cookie + semver", "groupName": "http-client-group", "matchPackageNames": ["axios", "tough-cookie", "semver"] },
+    { "description": "CASE-GROUP-1: axios cap", "matchPackageNames": ["axios"], "allowedVersions": "<=0.21.4" },
+    { "description": "CASE-GROUP-1: tough-cookie cap", "matchPackageNames": ["tough-cookie"], "allowedVersions": "<=4.1.3" },
+    { "description": "CASE-GROUP-1: semver cap", "matchPackageNames": ["semver"], "allowedVersions": "<=7.5.2" },
+
+    { "description": "CASE-PIN-1: json5 pin", "matchPackageNames": ["json5"], "rangeStrategy": "pin" },
+
+    {
+      "description": "CASE-SPLIT-1: lodash (patch, VIS=6) + ws (major, VIS=0) in one group. RiskTier=major, lodash is SplitCandidate with share=1.0, childVME=6.0 >> CR-VME=2.0.",
+      "groupName": "split-candidate-group",
+      "matchPackageNames": ["lodash", "ws"],
+      "separateMajorMinor": false,
+      "separateMinorPatch": false
+    },
+
+    {
+      "description": "CASE-BUMP-1: chalk in-range bump. Renovate emits updateType=patch in the MR table but applies a bumped range. The addLabel 'bump' marks this MR for future parser support.",
+      "matchPackageNames": ["chalk"],
+      "rangeStrategy": "bump",
+      "addLabels": ["bump"]
     },
     {
-      "description": "npm: minimist CVE fix (patch) — fixes CVE-2021-44906",
-      "matchPackageNames": [
-        "minimist"
-      ],
-      "allowedVersions": "<=1.2.6"
+      "description": "CASE-BUMP-1b: cap chalk to 4.x",
+      "matchPackageNames": ["chalk"],
+      "allowedVersions": "<5"
     },
     {
-      "description": "npm: express minor update — no CVE, tests MR without security impact",
-      "matchPackageNames": [
-        "express"
-      ],
-      "allowedVersions": "<=4.21.0"
+      "description": "CASE-ROLLBACK-1: left-pad rollback -> ChangeRollback (risk 3). Declared at >=2.0.0 (no such version exists) so Renovate rolls back to 1.3.0. Requires rollbackPrs:true (set globally).",
+      "matchPackageNames": ["left-pad"]
     },
     {
-      "description": "Python: PyYAML CVE fix (major) — fixes CVE-2020-14343",
-      "matchPackageNames": [
-        "PyYAML"
-      ],
-      "allowedVersions": "<=6.0"
-    },
-    {
-      "description": "Python: Pillow CVE fix (major) — fixes multiple CVEs",
-      "matchPackageNames": [
-        "Pillow"
-      ],
-      "allowedVersions": "<=10.2.0"
-    },
-    {
-      "description": "Python: requests CVE fix (patch) — fixes CVE-2024-35195",
-      "matchPackageNames": [
-        "requests"
-      ],
-      "allowedVersions": "<=2.32.0"
-    },
-    {
-      "description": "Go: x/net CVE fixes — fixes CVE-2023-44487 (HTTP/2 Rapid Reset) and others",
-      "matchPackageNames": [
-        "golang.org/x/net"
-      ],
-      "allowedVersions": "<=v0.33.0"
-    },
-    {
-      "description": "Go: x/crypto CVE fixes — fixes CVE-2023-48795 (Terrapin) and others",
-      "matchPackageNames": [
-        "golang.org/x/crypto"
-      ],
-      "allowedVersions": "<=v0.31.0"
-    },
-    {
-      "description": "Go: gin CVE fix (minor) — fixes CVE-2023-26125 and others",
-      "matchPackageNames": [
-        "github.com/gin-gonic/gin"
-      ],
-      "allowedVersions": "<=v1.9.1"
-    },
-    {
-      "description": "Maven: log4j-core CVE fix (minor) — fixes CVE-2021-44228 (Log4Shell), CVE-2021-45046",
-      "matchPackageNames": [
-        "org.apache.logging.log4j:log4j-core"
-      ],
-      "allowedVersions": "<=2.17.1"
-    },
-    {
-      "description": "Rust: rustls CVE fix (patch) — fixes RUSTSEC-2024-0336",
-      "matchPackageNames": [
-        "rustls"
-      ],
-      "allowedVersions": "<=0.21.11"
-    },
-    {
-      "description": "Rust: tokio CVE fix (minor) — fixes RUSTSEC-2023-0001 and others",
-      "matchPackageNames": [
-        "tokio"
-      ],
-      "allowedVersions": "<=1.27.0"
-    },
-    {
-      "description": "Ruby: actionpack CVE fixes (patch) — fixes multiple Rails CVEs",
-      "matchPackageNames": [
-        "actionpack"
-      ],
-      "allowedVersions": "<=6.1.7.8"
-    },
-    {
-      "description": "NuGet: Newtonsoft.Json CVE fix (major) — fixes GHSA-5crp-9r3c-p9vr",
-      "matchPackageNames": [
-        "Newtonsoft.Json"
-      ],
-      "allowedVersions": "<=13.0.3"
-    },
-    {
-      "description": "NuGet: System.Text.Json CVE fix (major) — fixes GHSA-8g4q-xg66-9fp4",
-      "matchPackageNames": [
-        "System.Text.Json"
-      ],
-      "allowedVersions": "<=8.0.5"
-    },
-    {
-      "description": "PHP: guzzlehttp/guzzle CVE fixes (minor) — fixes multiple HTTP client CVEs",
-      "matchPackageNames": [
-        "guzzlehttp/guzzle"
-      ],
-      "allowedVersions": "<=7.8.0"
-    },
-    {
-      "description": "Elixir: phoenix CVE fix (minor) — fixes GHSA-p8f7-22gq-m7j9",
-      "matchPackageNames": [
-        "phoenix"
-      ],
-      "allowedVersions": "<=1.7.0"
-    },
-    {
-      "description": "Dart: dio CVE fix (major) — fixes CVE-2021-31402 (CRLF injection)",
-      "matchPackageNames": [
-        "dio"
-      ],
-      "allowedVersions": "<=5.0.0"
-    },
-    {
-      "description": "Swift: swift-nio-http2 CVE fix (minor) — fixes CVE-2023-44487",
-      "matchPackageNames": [
-        "apple/swift-nio-http2"
-      ],
-      "allowedVersions": "<=1.28.0"
-    },
-    {
-      "description": "Docker: nginx CVE fix (minor) — fixes CVE-2025-23419 (session resumption bypass)",
-      "matchPackageNames": [
-        "nginx"
-      ],
-      "matchDatasources": [
-        "docker"
-      ],
-      "allowedVersions": "<=1.25"
-    },
-    {
-      "description": "Docker: pin node image digest — tests pinDigest updateType",
-      "matchPackageNames": [
-        "node"
-      ],
-      "matchDatasources": [
-        "docker"
-      ],
-      "pinDigests": true
-    },
-    {
-      "description": "CASE-GROUP-1: Gruppierte Updates — axios + tough-cookie + semver in einem Branch",
-      "groupName": "http-client-group",
-      "matchPackageNames": [
-        "axios",
-        "tough-cookie",
-        "semver"
-      ]
-    },
-    {
-      "description": "CASE-GROUP-1: axios version cap",
-      "matchPackageNames": [
-        "axios"
-      ],
-      "allowedVersions": "<=0.21.4"
-    },
-    {
-      "description": "CASE-GROUP-1: tough-cookie version cap",
-      "matchPackageNames": [
-        "tough-cookie"
-      ],
-      "allowedVersions": "<=4.1.3"
-    },
-    {
-      "description": "CASE-GROUP-1: semver version cap",
-      "matchPackageNames": [
-        "semver"
-      ],
-      "allowedVersions": "<=7.5.2"
-    },
-    {
-      "description": "CASE-PIN-1: json5 pin update — tests rangeStrategy pin",
-      "matchPackageNames": [
-        "json5"
-      ],
-      "rangeStrategy": "pin"
-    },
-    {
-      "description": "CASE-PIN-2: ws pin update — tests rangeStrategy pin",
-      "matchPackageNames": [
-        "ws"
-      ],
-      "rangeStrategy": "pin"
+      "description": "CASE-REPLACEMENT-1: xmldom -> @xmldom/xmldom -> ChangeReplacement (risk 0, unknown). Exercises HasUnknownRisk / VME n/a on a parseable-version replacement.",
+      "matchPackageNames": ["xmldom"],
+      "matchDatasources": ["npm"],
+      "replacementName": "@xmldom/xmldom",
+      "replacementVersion": "0.8.10"
     }
   ]
 }
