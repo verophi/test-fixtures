@@ -3,13 +3,16 @@
   "private": true,
   "description": "Intentionally vulnerable npm fixtures for vero E2E tests",
   "dependencies": {
+    "axios": "0.21.1",
+    "chalk": "^4.1.0",
+    "express": "4.17.1",
+    "json5": "^2.2.1",
+    "left-pad": ">=2.0.0",
     "lodash": "4.17.20",
     "minimist": "1.2.5",
-    "express": "4.17.1",
-    "axios": "0.21.1",
-    "tough-cookie": "4.1.2",
     "semver": "7.3.7",
-    "json5": "^2.2.1",
-    "ws": "^7.5.9"
+    "tough-cookie": "4.1.2",
+    "ws": "^7.5.9",
+    "xmldom": "0.6.0"
   }
 }
