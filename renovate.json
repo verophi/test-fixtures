@@ -23,6 +23,11 @@
       "enabled": false
     },
     { "description": "npm: lodash CVE fix (patch)", "matchPackageNames": ["lodash"], "allowedVersions": "<=4.17.21" },
+    {
+      "description": "CASE-PARTIAL-1: lodash-es disabled — no MR created. CVE-2021-23337 + CVE-2020-28500 affect both lodash AND lodash-es; lodash gets fixed (MR !134 target 4.17.21), lodash-es does not → partially addressed (1/2 occurrences).",
+      "matchPackageNames": ["lodash-es"],
+      "enabled": false
+    },
     { "description": "npm: minimist CVE fix (patch)", "matchPackageNames": ["minimist"], "allowedVersions": "<=1.2.6" },
     { "description": "npm: express minor update", "matchPackageNames": ["express"], "allowedVersions": "<=4.21.0" },
     { "description": "Python: PyYAML CVE fix (major)", "matchPackageNames": ["PyYAML"], "allowedVersions": "<=6.0" },
@@ -42,9 +47,9 @@
     { "description": "Elixir: phoenix CVE fix (minor)", "matchPackageNames": ["phoenix"], "allowedVersions": "<=1.7.0" },
     { "description": "Dart: dio CVE fix (major)", "matchPackageNames": ["dio"], "allowedVersions": "<=5.0.0" },
     {
-      "description": "Swift: swift-nio-http2 capped at current version. No update created, so CVE-2023-44487 becomes partially addressed (x/net=fixed, swift-nio-http2=not fixed -> 1/2 occurrences).",
+      "description": "Swift: swift-nio-http2 CVE fix (minor). Target 1.28.0 reaches CVE-2023-44487 fix. Together with x/net MR, this makes 44487 collectively reducible across 2 MRs.",
       "matchPackageNames": ["apple/swift-nio-http2"],
-      "enabled": false
+      "allowedVersions": "<=1.28.0"
     },
     { "description": "Docker: nginx CVE fix (minor)", "matchPackageNames": ["nginx"], "matchDatasources": ["docker"], "allowedVersions": "<=1.25" },
     { "description": "Docker: pin node image digest (pinDigest)", "matchPackageNames": ["node"], "matchDatasources": ["docker"], "pinDigests": true },
