@@ -4,7 +4,7 @@
   "automerge": false,
   "recreateWhen": "always",
   "commitBody": "[skip ci]",
-  "lockFileMaintenance": { "enabled": true, "skipArtifactsUpdate": false },
+  "lockFileMaintenance": { "enabled": true, "skipArtifactsUpdate": false, "schedule": ["at any time"] },
   "skipArtifactsUpdate": true,
   "rollbackPrs": true,
   "prConcurrentLimit": 0,
