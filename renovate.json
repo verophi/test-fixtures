@@ -4,7 +4,7 @@
   "automerge": false,
   "recreateWhen": "always",
   "commitBody": "[skip ci]",
-  "lockFileMaintenance": { "enabled": true },
+  "lockFileMaintenance": { "enabled": true, "skipArtifactsUpdate": false },
   "skipArtifactsUpdate": true,
   "rollbackPrs": true,
   "prConcurrentLimit": 0,
@@ -15,6 +15,12 @@
       "description": "Label packages not covered by Trivy SBOM scanning",
       "matchDatasources": ["github-tags", "docker"],
       "addLabels": ["no-sbom-coverage"]
+    },
+    {
+      "description": "Disable lockFileMaintenance for everything except the dedicated fixture",
+      "matchUpdateTypes": ["lockFileMaintenance"],
+      "matchFileNames": ["!packages/lockfile-maintenance/**"],
+      "enabled": false
     },
     { "description": "npm: lodash CVE fix (patch)", "matchPackageNames": ["lodash"], "allowedVersions": "<=4.17.21" },
     { "description": "npm: minimist CVE fix (patch)", "matchPackageNames": ["minimist"], "allowedVersions": "<=1.2.6" },

@@ -1,0 +1,8 @@
+{
+  "name": "vero-lockfile-maintenance-fixture",
+  "private": true,
+  "description": "Minimal fixture with an outdated lockfile for lockFileMaintenance testing",
+  "dependencies": {
+    "debug": "^4.3.0"
+  }
+}
