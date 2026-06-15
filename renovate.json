@@ -12,7 +12,7 @@
   "labels": ["renovate", "{{datasource}}", "{{updateType}}"],
   "packageRules": [
     {
-      "description": "Label packages not covered by Trivy SBOM scanning. Only docker base images qualify: trivy fs scans manifests, not base images, so nginx/node are absent from the SBOM. github-tags is intentionally excluded — Swift packages (e.g. apple/swift-nio-http2) use github-tags but ARE in the SBOM as pkg:swift components.",
+      "description": "Label docker base images, which the Trivy fs scan does not cover. Not github-tags: Swift packages use it but are in the SBOM.",
       "matchDatasources": ["docker"],
       "addLabels": ["no-sbom-coverage"]
     },
@@ -22,7 +22,7 @@
       "matchFileNames": ["!packages/lockfile-maintenance/**"],
       "enabled": false
     },
-    { "description": "npm: lodash CVE fix (patch). Standalone MR (not grouped) so it fixes only the lodash occurrence of CVE-2021-23337 + CVE-2020-28500; the lodash-es twin has no MR => partially addressed.", "matchPackageNames": ["lodash"], "allowedVersions": "<=4.17.21" },
+    { "description": "npm: lodash CVE fix (patch), standalone so the lodash-es twin stays partially addressed", "matchPackageNames": ["lodash"], "allowedVersions": "<=4.17.21" },
     {
       "description": "CASE-PARTIAL-1: lodash-es disabled — no MR created. CVE-2021-23337 + CVE-2020-28500 affect both lodash AND lodash-es; lodash gets fixed (standalone patch MR, target 4.17.21), lodash-es does not => partially addressed (1/2 occurrences).",
       "matchPackageNames": ["lodash-es"],
@@ -62,7 +62,7 @@
     { "description": "CASE-PIN-1: json5 pin", "matchPackageNames": ["json5"], "rangeStrategy": "pin" },
 
     {
-      "description": "CASE-SPLIT-1: minimist (patch, CVE-2021-44906 critical, VIS=8, single occurrence => fully addressed) + ws (major, no CVE, VIS=0) in one group. RiskTier=major(3), CR-VIS=8, CR-VME=2.67; minimist is SplitCandidate with share=1.0 and childVME=8.0. lodash is intentionally NOT here (kept standalone) so its lodash-es twin stays partially addressed.",
+      "description": "CASE-SPLIT-1: minimist (patch, CVE-2021-44906, VIS=8) + ws (major, no CVE, VIS=0) in one group. RiskTier=major, minimist is SplitCandidate with share=1.0, childVME=8.0 >> CR-VME=2.67.",
       "groupName": "split-candidate-group",
       "matchPackageNames": ["minimist", "ws"],
       "separateMajorMinor": false,
