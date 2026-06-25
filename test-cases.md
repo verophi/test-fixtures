@@ -1,6 +1,6 @@
 # Test Cases — verophi E2E Fixtures
 
-Last updated: 2026-06-14.
+Last updated: 2026-06-25.
 
 This document describes the test and edge cases the fixture repo covers. Each
 case is driven by manifests under `packages/<ecosystem>/` and the `renovate.json`
@@ -162,16 +162,3 @@ Three npm packages in one branch; exercises multi-row table parsing.
 Not disabled but with no open request: **requests** (pip, capped `<=2.32.0`); its
 CVEs appear as uncorrelated. **lodash-es** is intentionally disabled (it drives the
 partially-addressed case).
-
----
-
-## Not covered (Phase 2 / not constructible)
-
-| Case | Status |
-|---|---|
-| Digest update with a CVE | Not constructible: `trivy fs` does not scan base images, and image CVEs would carry a different identity than the image name. |
-| Plain `digest` (vs pinDigest) | No fixture; only pinDigest is present. |
-| `unparsedDeps > 0` | No fixture row that is recognized by name but fails to parse. |
-| Custom branchPrefix (`deps/`) | Branch-parsing question, open. |
-| Title fallback (PR without description) | Requires manual PRs after a remote push. |
-| Two-manifest collapse of one dep | Treated conservatively as unknown; no dedicated fixture case. |

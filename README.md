@@ -15,25 +15,27 @@ Same content on both platforms:
 
 ```
 .
-├── renovate.json            # allowedVersions caps
-├── dependency-matrix.yaml   # versions, bumps, CVEs (assertion input)
-└── packages/                # 12 ecosystems
+├── renovate.json   # allowedVersions caps for deterministic PRs
+├── test-cases.md   # documented test & edge cases
+└── packages/       # 12 ecosystems
 ```
 
-## dependency-matrix.yaml
+## Expected outcomes
 
-Assertion input for `verophi-inttest`. Per package: from/to versions,
-expected bump type, known CVEs. Update this file first when changing fixtures.
+The authoritative expected outcome (scores, status, CVE correlation) lives in
+`verophi-inttest/expectations.yaml`, generated from a verified verophi run
+against the open PRs/MRs and the frozen SBOM. See `test-cases.md` for the
+documented cases. Re-generate and review the diff when changing fixtures.
 
 ## Renovate
 
 `renovate.json` caps versions via `allowedVersions` so PRs are deterministic.
-The inttest orchestrates Renovate runs — this repo has no automation.
+The inttest orchestrates Renovate runs; this repo has no automation.
 
 ## Adding a package
 
 1. Package manifest under `packages/<ecosystem>/`
 2. Lock file if applicable
-3. Entry in `dependency-matrix.yaml`
-4. `packageRule` in `renovate.json`
+3. `packageRule` in `renovate.json` (cap the version for determinism)
+4. Re-generate `verophi-inttest/expectations.yaml` and review the diff
 5. Verify via dry-run in verophi-inttest
