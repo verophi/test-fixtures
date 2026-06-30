@@ -19,7 +19,7 @@ Current state: 39 open requests per platform — 22 matched, 16 unmatched,
 ### Patch / Minor / Major (separateMajorMinor)
 Single updates with the correct change type and risk.
 - **patch:** actionpack (6.1.4→6.1.7.8, 8 CVEs), python-multipart (0.0.5→0.0.18),
-  System.Text.Json (6.0.0→6.0.11).
+  System.Text.Json (6.0.0→7.0.4).
 - **minor:** express, golang.org/x/net, golang.org/x/crypto, gin, log4j-core,
   tokio, guzzlehttp/guzzle, phoenix, swift-nio-http2.
 - **major:** Pillow, PyYAML, Newtonsoft.Json, System.Text.Json, dio.
