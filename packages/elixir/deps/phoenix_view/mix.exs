@@ -33,7 +33,7 @@ defmodule PhoenixView.MixProject do
 
   defp deps do
     [
-      {:phoenix_html, "~> 2.14.2 or ~> 3.0", optional: true},
+      {:phoenix_html, "~2.14.2 or ~> 3.0 or ~> 4.0", optional: true},
       {:jason, "~> 1.0", only: :test},
       {:ex_doc, "~> 0.22", only: :docs}
     ]
