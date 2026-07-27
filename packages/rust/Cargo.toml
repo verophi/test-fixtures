@@ -6,4 +6,4 @@ publish = false
 
 [dependencies]
 rustls = "=0.20.8"
-tokio = { version = "=1.17.0", features = ["full"] }
+tokio = { version = "=1.27.0", features = ["full"] }
