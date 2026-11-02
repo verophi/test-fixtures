@@ -1,4 +1,4 @@
-FROM nginx:1.24-alpine AS web
+FROM nginx:1.25-alpine AS web
 WORKDIR /usr/share/nginx/html
 
 FROM node:20-alpine
