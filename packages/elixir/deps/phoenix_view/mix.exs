@@ -35,7 +35,7 @@ defmodule PhoenixView.MixProject do
     [
       {:phoenix_html, "~> 2.14.2 or ~> 3.0", optional: true},
       {:jason, "~> 1.0", only: :test},
-      {:ex_doc, "~> 0.22", only: :docs}
+      {:ex_doc, "~> 0.40", only: :docs}
     ]
   end
 
