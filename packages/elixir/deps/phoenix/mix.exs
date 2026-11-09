@@ -72,7 +72,7 @@ defmodule Phoenix.MixProject do
       {:jason, "~> 1.0", optional: true},
 
       # Docs dependencies (some for cross references)
-      {:ex_doc, "~> 0.24", only: :docs},
+      {:ex_doc, "~> 0.40", only: :docs},
       {:ecto, "~> 3.0", only: :docs},
       {:ecto_sql, "~> 3.6", only: :docs},
       {:gettext, "~> 0.18", only: :docs},
