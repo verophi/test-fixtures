@@ -12,7 +12,7 @@ defmodule VeroTestFixtures.MixProject do
 
   defp deps do
     [
-      {:phoenix, "== 1.6.0"}
+      {:phoenix, "== 1.7.0"}
     ]
   end
 end
